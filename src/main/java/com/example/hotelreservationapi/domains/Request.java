@@ -7,6 +7,8 @@ public class Request {
 
     private int id;
 
+    private User user;
+
     private int numberOfRooms;
 
     private String roomClass;
@@ -15,18 +17,16 @@ public class Request {
 
     private Date endDate;
 
-    private boolean isConfirmed;
-
-    private User user;
+    private String status;
 
     public Request(int id, int numberOfRooms,
-                   String roomClass, Date startDate, Date endDate, boolean isConfirmed){
+                   String roomClass, Date startDate, Date endDate, String status){
         this.id = id;
         this.numberOfRooms = numberOfRooms;
         this.roomClass = roomClass;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.isConfirmed = isConfirmed;
+        this.status = status;
     }
 
 
@@ -78,14 +78,6 @@ public class Request {
         this.endDate = endDate;
     }
 
-    public boolean isConfirmed() {
-        return isConfirmed;
-    }
-
-    public void setConfirmed(boolean confirmed) {
-        isConfirmed = confirmed;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -97,5 +89,13 @@ public class Request {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hotelreservationapi.mappers.RequestMapper">
+    <resultMap id="RequestResultMap" type="com.example.hotelreservationapi.domains.Request">
+        <id property="id" column="id"/>
+        <result property="numberOfRooms" column="number_of_rooms"/>
+        <result property="roomClass" column="class"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="status" column="status"/>
+        <association property="user" column="user_id" javaType="com.example.hotelreservationapi.domains.User">
+            <id property="id" column="id"/>
+            <result property="login" column="login"/>
+            <result property="password" column="password"/>
+            <result property="name" column="name"/>
+            <result property="surname" column="surname"/>
+            <result property="middlename" column="middlename"/>
+            <result property="email" column="email"/>
+        </association>
+    </resultMap>
+
+    <!--<resultMap id="UserResultMap" type="com.example.hotelreservationapi.domains.User">
+        <result column="id" property="id"/>
+        <result column="login" property="login"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="surname" property="surname"/>
+        <result column="middlename" property="middlename"/>
+        <result column="email" property="email"/>
+    </resultMap>-->
+
+    <select id="read" resultMap="RequestResultMap">
+        select requests.id, requests.number_of_rooms, requests.class,
+               requests.start_date, requests.end_date, requests.status,
+               users.id as uId, users.login, users.password, users.name, users.surname, users.middlename,users.email
+        from requests left JOIN users on requests.user_id = users.id
+    </select>
+
+
+</mapper>
