@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hotelreservationapi.mappers.RoleMapper">
+    <resultMap id="RoleResultMap" type="com.example.hotelreservationapi.domains.Role">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <select id="read" resultMap="RoleResultMap">
+        select *
+        from roles
+    </select>
+
+    <select id="readAllUserRoles" resultMap="RoleResultMap">
+        select roles.id, roles.name
+        from roles,
+             users_roles
+        where users_roles.user_id = #{userId};
+    </select>
+
+    <insert id="addRoleToUser">
+        insert into users_role
+        values #{userId}, #{roleId};
+    </insert>
+
+    <delete id="deleteRoleFromUser">
+        delete
+        from users_roles
+        where users_roles.user_id = #{userId}
+          AND users_roles.role_id = #{roleId};
+    </delete>
+
+</mapper>
