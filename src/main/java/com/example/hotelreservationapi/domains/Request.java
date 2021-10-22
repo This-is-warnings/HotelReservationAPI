@@ -7,8 +7,6 @@ public class Request {
 
     private int id;
 
-    private User user;
-
     private int numberOfRooms;
 
     private String roomClass;
@@ -19,10 +17,11 @@ public class Request {
 
     private boolean isConfirmed;
 
-    public Request(int id, User user, int numberOfRooms,
+    private User user;
+
+    public Request(int id, int numberOfRooms,
                    String roomClass, Date startDate, Date endDate, boolean isConfirmed){
         this.id = id;
-        this.user = user;
         this.numberOfRooms = numberOfRooms;
         this.roomClass = roomClass;
         this.startDate = startDate;

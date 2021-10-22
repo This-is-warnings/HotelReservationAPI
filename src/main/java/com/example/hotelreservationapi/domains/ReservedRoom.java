@@ -7,10 +7,6 @@ public class ReservedRoom {
 
     private int id;
 
-    private User user;
-
-    private Room room;
-
     private float price;
 
     private boolean isPaid;
@@ -19,11 +15,13 @@ public class ReservedRoom {
 
     private Date endDate;
 
-    public ReservedRoom(int id, User user, Room room, float price,
+    private User user;
+
+    private Room room;
+
+    public ReservedRoom(int id, float price,
                         boolean isPaid, Date startDate, Date endDate){
         this.id = id;
-        this.user = user;
-        this.room = room;
         this.price = price;
         this.isPaid = isPaid;
         this.startDate = startDate;
