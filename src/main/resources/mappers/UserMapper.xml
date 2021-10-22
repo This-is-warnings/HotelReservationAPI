@@ -7,7 +7,7 @@
     <resultMap id="UserResultMap" type="com.example.hotelreservationapi.domains.User">
         <result column="id" property="id"/>
         <result column="login" property="login"/>
-        <result column="password" property="name"/>
+        <result column="password" property="password"/>
         <result column="name" property="name"/>
         <result column="surname" property="surname"/>
         <result column="middlename" property="middlename"/>
