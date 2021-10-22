@@ -57,17 +57,18 @@ create table cards
 	id serial
 		constraint cards_pk
 			primary key,
-	user_id int not null
-		constraint cards_users_id_fk
-			references users
-				on delete cascade,
 	number varchar(16) not null,
-	balance real not null
+	balance real not null,
+    user_id int not null
+        constraint cards_users_id_fk
+            references users
+            on delete cascade
 );
 
 --after
 alter table cards alter column number type varchar(20) using number::varchar(20);
 
+alter table cards alter column balance set default 300;
 -- tabel requests
 create table requests
 (

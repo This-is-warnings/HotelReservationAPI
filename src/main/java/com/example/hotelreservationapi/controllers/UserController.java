@@ -1,7 +1,10 @@
 package com.example.hotelreservationapi.controllers;
 
+import com.example.hotelreservationapi.domains.Card;
 import com.example.hotelreservationapi.domains.User;
+import com.example.hotelreservationapi.services.CardService;
 import com.example.hotelreservationapi.services.UserService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CardService cardService;
 
     @GetMapping
     @ApiOperation("Get all user")
@@ -45,5 +51,28 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+    @GetMapping("/{id}/cards")
+    @ApiOperation("Get user cards")
+    ArrayList<Card> getUserCards(@PathVariable(name = "id") int id){
+        return cardService.getUserCards(id);
+    }
+
+    @PostMapping("/{id}/cards")
+    @ApiOperation("Add card to user")
+    void addCard(@PathVariable(name = "id") int id, @RequestBody Card card){
+        cardService.createCard(card);
+    }
+
+    @PutMapping("/{id}/cards")
+    @ApiOperation("update card balance")
+    void updateCardBalance(@PathVariable(name = "id") int id, float balance){
+        cardService.updateBalance(id, balance);
+    }
+
+    @DeleteMapping("/{id}/cards")
+    @ApiOperation("delete card")
+    void deleteCard(@PathVariable("id") int id){
+        cardService.deleteCard(id);
+    }
 
 }

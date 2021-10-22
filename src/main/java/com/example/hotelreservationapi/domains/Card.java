@@ -6,19 +6,24 @@ public class Card {
 
     private int id;
 
-    private User user;
-
     private String number;
 
     private float balance;
 
-    public Card(int id, User user, String number, float balance){
+    private User user;
+
+    public Card(int id, String number, float balance){
         this.id = id;
-        this.user = user;
         this.number = number;
         this.balance = balance;
     }
 
+    /*public Card(int id, String number, float balance, User user){
+        this.id = id;
+        this.number = number;
+        this.balance = balance;
+        this.user = user;
+    }*/
 
     public int getId() {
         return id;
