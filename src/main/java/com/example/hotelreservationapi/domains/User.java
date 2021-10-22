@@ -1,5 +1,6 @@
 package com.example.hotelreservationapi.domains;
 
+import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -24,7 +25,7 @@ public class User {
         this.login = login;
         this.password = password;
         this.name = name;
-        this.surname = name;
+        this.surname = surname;
         this.middlename = middlename;
         this.email = email;
     }
