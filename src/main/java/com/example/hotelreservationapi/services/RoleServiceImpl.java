@@ -30,6 +30,6 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     public void deleteRoleFromUser(int userId, int roleID) {
-        roleMapper.addRoleToUser(userId, roleID);
+        roleMapper.deleteRoleFromUser(userId, roleID);
     }
 }
