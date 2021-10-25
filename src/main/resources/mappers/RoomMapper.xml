@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hotelreservationapi.mappers.RoomMapper">
+    <resultMap id="RoomResultMap" type="com.example.hotelreservationapi.domains.Room">
+        <result column="id" property="id"/>
+        <result column="number" property="number"/>
+        <result column="number_of_rooms" property="numberOfRooms"/>
+        <result column="class" property="roomClass"/>
+        <result column="price_per_day" property="pricePerDay"/>
+        <result column="isFree" property="isFree"/>
+    </resultMap>
+
+    <select id="read" resultMap="RoomResultMap">
+        select *
+        from rooms
+    </select>
+
+    <insert id="create">
+        insert into rooms(number,number_of_rooms,class,price_per_day)
+        values (#{number}, #{numberOfRooms}, #{roomClass}, #{pricePerDay});
+    </insert>
+
+    <delete id="delete">
+        delete
+        from rooms
+        where id = #{id}
+    </delete>
+
+    <update id="update">
+        UPDATE rooms
+        SET number   = #{number},
+            number_of_rooms       = #{numberOfRooms},
+            class    = #{roomClass},
+            price_per_day = #{pricePerDay}
+        WHERE id = #{id};
+    </update>
+
+</mapper>
