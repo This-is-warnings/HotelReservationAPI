@@ -8,4 +8,13 @@ public interface RequestService {
 
     ArrayList<Request> getAllRequests();
 
+    Request getById(int id);
+
+    ArrayList<Request> getUserRequests(int userId);
+
+    void delete(int id);
+
+    void add(Request request);
+
+    void updateStatus(int id, String newStatus);
 }

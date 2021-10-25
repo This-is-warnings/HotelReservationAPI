@@ -10,12 +10,14 @@ public interface RequestMapper {
 
     ArrayList<Request> read();
 
- /*   ArrayList<Request> readUserRequests(int userId);
+    Request readById(int id);
 
-    void deleteRequest(int requestId);
+    ArrayList<Request> readUserRequests(int userId);
+
+    void deleteRequest(int id);
 
     void create(Request request);
 
-    void updateConfirmed(int requestId, boolean isConfirmed);*/
+    void updateStatus(int id, String newStatus);
 
 }

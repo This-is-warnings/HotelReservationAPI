@@ -86,6 +86,15 @@ create table requests
 	"isConfirmed" boolean default null
 );
 
+--after
+alter table requests rename column "isConfirmed" to status;
+
+alter table requests alter column status type varchar(16) using status::varchar(16);
+
+alter table requests alter column status set not null;
+
+alter table requests alter column status set default 'unchecked';
+
 -- tabel rooms
 create table rooms
 (

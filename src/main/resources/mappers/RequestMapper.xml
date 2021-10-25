@@ -12,7 +12,7 @@
         <result property="endDate" column="end_date"/>
         <result property="status" column="status"/>
         <association property="user" column="user_id" javaType="com.example.hotelreservationapi.domains.User">
-            <id property="id" column="id"/>
+            <id property="id" column="uId"/>
             <result property="login" column="login"/>
             <result property="password" column="password"/>
             <result property="name" column="name"/>
@@ -33,11 +33,81 @@
     </resultMap>-->
 
     <select id="read" resultMap="RequestResultMap">
-        select requests.id, requests.number_of_rooms, requests.class,
-               requests.start_date, requests.end_date, requests.status,
-               users.id as uId, users.login, users.password, users.name, users.surname, users.middlename,users.email
-        from requests left JOIN users on requests.user_id = users.id
+        select requests.id,
+               requests.number_of_rooms,
+               requests.class,
+               requests.start_date,
+               requests.end_date,
+               requests.status,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        from requests
+                 left JOIN users on requests.user_id = users.id
     </select>
 
+    <select id="readUserRequests" resultMap="RequestResultMap">
+        select requests.id,
+               requests.number_of_rooms,
+               requests.class,
+               requests.start_date,
+               requests.end_date,
+               requests.status,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        from requests
+                 left JOIN users on requests.user_id = users.id
+        where requests.user_id = #{userId}
+    </select>
+
+    <select id="readById" resultMap="RequestResultMap">
+        select requests.id,
+               requests.number_of_rooms,
+               requests.class,
+               requests.start_date,
+               requests.end_date,
+               requests.status,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        from requests
+                 left JOIN users on requests.user_id = users.id
+        where requests.id = #{id}
+    </select>
+
+    <delete id="deleteRequest">
+        delete
+        from requests
+        where id = #{id}
+    </delete>
+
+    <insert id="create">
+        insert into requests(user_id, number_of_rooms, class, start_date,end_date, status)
+        values (#{user.id},
+                #{numberOfRooms},
+                #{roomClass},
+                #{startDate},
+                #{endDate},
+                #{status})
+    </insert>
+
+    <update id="updateStatus">
+        update requests
+        set status = #{newStatus}
+        where id = #{id}
+    </update>
 
 </mapper>

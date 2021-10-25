@@ -17,4 +17,31 @@ public class RequestServiceImpl implements RequestService{
     public ArrayList<Request> getAllRequests() {
         return requestMapper.read();
     }
+
+    @Override
+    public ArrayList<Request> getUserRequests(int userId) {
+        return requestMapper.readUserRequests(userId);
+    }
+
+    @Override
+    public void delete(int id) {
+        requestMapper.deleteRequest(id);
+    }
+
+    @Override
+    public void add(Request request) {
+        requestMapper.create(request);
+    }
+
+    @Override
+    public void updateStatus(int id, String newStatus) {
+        requestMapper.updateStatus(id, newStatus);
+    }
+
+    @Override
+    public Request getById(int id){
+        return requestMapper.readById(id);
+    }
+
+
 }
