@@ -25,11 +25,17 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     public void addRoleToUser(int userId, int roleId) {
+        System.out.println("add role \nuserId "+ userId + " roleId " + roleId );
         roleMapper.addRoleToUser(userId, roleId);
     }
 
     @Override
     public void deleteRoleFromUser(int userId, int roleID) {
         roleMapper.deleteRoleFromUser(userId, roleID);
+    }
+
+    @Override
+    public void deleteAllUserRoles(int userId) {
+        roleMapper.deleteAllUserRoles(userId);
     }
 }

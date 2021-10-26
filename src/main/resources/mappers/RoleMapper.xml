@@ -22,8 +22,8 @@
     </select>
 
     <insert id="addRoleToUser">
-        insert into users_role
-        values #{userId}, #{roleId};
+        insert into users_roles
+        values (#{userId}, #{roleId});
     </insert>
 
     <delete id="deleteRoleFromUser">
@@ -31,6 +31,12 @@
         from users_roles
         where users_roles.user_id = #{userId}
           AND users_roles.role_id = #{roleId};
+    </delete>
+
+    <delete id="deleteAllUserRoles">
+        delete
+        from users_roles
+        where users_roles.user_id = #{userId}
     </delete>
 
 </mapper>

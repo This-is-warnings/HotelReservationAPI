@@ -12,27 +12,42 @@
         <result column="surname" property="surname"/>
         <result column="middlename" property="middlename"/>
         <result column="email" property="email"/>
+        <collection property="roles" ofType="com.example.hotelreservationapi.domains.Role"
+                    javaType="java.util.ArrayList">
+            <id property="id" column="rId"/>
+            <result property="name" column="rName"/>
+        </collection>
+
     </resultMap>
     <!--<resultMap id="RoleResultMap" type="com.example.springwebproject.domain.Role">
         <result column="id" property="id"/>
         <result column="name" property="name"/>
     </resultMap>-->
 
+    <!--<select id="selectRolesForUser" resultMap="RoleResultMap" >
+        select  roles.id, roles.name from roles where users_roles.user_id = #{id} and user_roles.role_id = roles.id
+    </select>-->
+
     <select id="readById" resultMap="UserResultMap">
-        select *
-        from users
-        where id = #{id}
+        select users.*, roles.id as rId, roles.name as rName
+        from users, roles, users_roles
+        where users.id = #{id} and users.id = users_roles.user_id and roles.id = users_roles.role_id
     </select>
 
     <select id="readAll" resultMap="UserResultMap">
-        select id, login, password, name, surname, middlename, email
-        from users
+        select users.*, roles.id as rId, roles.name as rName
+        from users, roles, users_roles
+        where users.id = users_roles.user_id and roles.id = users_roles.role_id
     </select>
 
-    <insert id="create">
+    <select id="create" resultType="int">
+        <!--<selectKey order="AFTER" keyProperty="id" resultType="int">
+            SELECT currval('users_id_seq'::regclass)
+        </selectKey>-->
         insert into users(login, password, name, surname, middlename, email)
-        values (#{user.login},#{user.password}, #{user.name}, #{user.surname}, #{user.middlename}, #{user.email});
-    </insert>
+        values (#{user.login},#{user.password}, #{user.name}, #{user.surname}, #{user.middlename}, #{user.email})
+        RETURNING id
+    </select>
 
     <delete id="delete">
         delete

@@ -16,4 +16,6 @@ public interface RoleMapper {
 
     ArrayList<Role> read();
 
+    void deleteAllUserRoles(int userId);
+
 }

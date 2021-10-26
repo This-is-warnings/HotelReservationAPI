@@ -1,5 +1,6 @@
 package com.example.hotelreservationapi.domains;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,6 +19,8 @@ public class User {
     private String middlename;
 
     private String email;
+
+    private ArrayList<Role> roles;
 
     public User(int id, String login, String password, String name,
                 String surname, String middlename, String email){
@@ -107,5 +110,13 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public ArrayList<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(ArrayList<Role> roles) {
+        this.roles = roles;
     }
 }
