@@ -10,7 +10,7 @@
         <result column="number_of_rooms" property="numberOfRooms"/>
         <result column="class" property="roomClass"/>
         <result column="price_per_day" property="pricePerDay"/>
-        <result column="isFree" property="isFree"/>
+        <result column="is_free" property="isFree"/>
     </resultMap>
 
     <select id="read" resultMap="RoomResultMap">

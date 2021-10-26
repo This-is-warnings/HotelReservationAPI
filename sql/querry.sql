@@ -107,8 +107,15 @@ create table rooms
 	price_per_day real not null,
 	"isFree" boolean default true not null
 );
+alter table rooms rename column "isFree" to is_free;
 
 create unique index rooms_number_uindex
 	on rooms (number);
 	
 -- table reserved_rooms
+
+alter table reserved_rooms rename column role_id to room_id;
+
+alter index reserved_rooms_user_id_role_id_uindex rename to reserved_rooms_user_id_room_id_uindex;
+
+alter table reserved_rooms rename column "isPaid" to is_paid;
