@@ -35,15 +35,23 @@
     </select>
 
     <select id="readAll" resultMap="UserResultMap">
-        select users.*, roles.id as rId, roles.name as rName
-        from users, roles, users_roles
-        where users.id = users_roles.user_id and roles.id = users_roles.role_id
+        select users.id,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email,
+               roles.id   as rId,
+               roles.name as rName
+        from users,
+             roles,
+             users_roles
+        where users.id = users_roles.user_id
+          and roles.id = users_roles.role_id
     </select>
 
     <select id="create" resultType="int">
-        <!--<selectKey order="AFTER" keyProperty="id" resultType="int">
-            SELECT currval('users_id_seq'::regclass)
-        </selectKey>-->
         insert into users(login, password, name, surname, middlename, email)
         values (#{user.login},#{user.password}, #{user.name}, #{user.surname}, #{user.middlename}, #{user.email})
         RETURNING id
