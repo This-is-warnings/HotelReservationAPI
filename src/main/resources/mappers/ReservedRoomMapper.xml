@@ -24,7 +24,6 @@
             <result property="number" column="number"/>
             <result property="numberOfRooms" column="number_of_rooms"/>
             <result property="roomClass" column="class"/>
-            <result property="surname" column="surname"/>
             <result property="pricePerDay" column="price_per_day"/>
             <result property="isFree" column="is_free"/>
         </association>
@@ -51,16 +50,17 @@
                rooms.is_free
         from reserved_rooms
                  left JOIN users on reserved_rooms.user_id = users.id
-                left join rooms on reserved_rooms.room_id = rooms.id
+                 left JOIN rooms on reserved_rooms.room_id = rooms.id
     </select>
 
     <insert id="create">
-        insert into reserved_rooms(user_id,room_id, price,start_date,end_date,is_paid)
+        insert into reserved_rooms(user_id, room_id, price, start_date, end_date, is_paid)
         values (#{user.id}, #{room.id}, #{price}, #{startDate}, #{endDate}, false5)
     </insert>
 
     <delete id="delete">
-        delete from reserved_rooms
+        delete
+        from reserved_rooms
         where id = #{id}
     </delete>
 </mapper>

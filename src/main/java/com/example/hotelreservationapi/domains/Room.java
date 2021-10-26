@@ -16,7 +16,7 @@ public class Room {
 
     private boolean isFree;
 
-    public Room(int id, int number, int numberOfRooms, String roomClass,
+    /*public Room(int id, int number, int numberOfRooms, String roomClass,
                 float pricePerDay, boolean isFree){
         this.id = id;
         this.number = number;
@@ -24,7 +24,7 @@ public class Room {
         this.roomClass = roomClass;
         this.pricePerDay = pricePerDay;
         this.isFree = isFree;
-    }
+    }*/
 
     public int getId() {
         return id;
