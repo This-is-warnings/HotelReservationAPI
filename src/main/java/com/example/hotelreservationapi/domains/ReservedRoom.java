@@ -18,16 +18,16 @@ public class ReservedRoom {
     private User user;
 
     private Room room;
+    /* getters and setters */
 
-    public ReservedRoom(int id, float price,
-                        boolean isPaid, Date startDate, Date endDate){
+    /*public ReservedRoom(int id, float price,
+                         Date startDate, Date endDate, boolean isPaid){
         this.id = id;
         this.price = price;
         this.isPaid = isPaid;
         this.startDate = startDate;
         this.endDate = endDate;
-    }
-
+    }*/
 
     public int getId() {
         return id;
