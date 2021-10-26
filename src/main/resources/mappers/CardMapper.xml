@@ -52,4 +52,10 @@
         WHERE id = #{id};
     </update>
 
+    <select id="readById" resultMap="CardResultMap">
+        select cards.id, cards.number, cards.balance, users.id as uId, users.login, users.password, users.name, users.surname, users.middlename,users.email
+        from cards left JOIN users on cards.user_id = users.id
+        where cards.id = #{id}
+    </select>
+
 </mapper>

@@ -14,4 +14,5 @@ public interface CardService {
 
     void updateBalance(int id, float balance);
 
+    Card getCardById(int id);
 }

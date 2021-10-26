@@ -33,4 +33,9 @@ public class CardServiceImpl implements CardService{
     public void updateBalance(int id, float balance) {
         cardMapper.updateBalance(id,balance);
     }
+
+    @Override
+    public Card getCardById(int id) {
+        return cardMapper.readById(id);
+    }
 }

@@ -75,4 +75,9 @@ public class UserController {
         cardService.deleteCard(id);
     }
 
+    @GetMapping("/cards/{id}")
+    @ApiOperation("get card by id")
+    Card getCardById(@PathVariable int id){
+        return cardService.getCardById(id);
+    }
 }

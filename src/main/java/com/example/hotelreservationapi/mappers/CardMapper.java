@@ -16,4 +16,7 @@ public interface CardMapper {
     ArrayList<Card> readUserCards(int userId);
 
     void updateBalance(int id, float balance);
+
+    Card readById(int id);
+
 }
