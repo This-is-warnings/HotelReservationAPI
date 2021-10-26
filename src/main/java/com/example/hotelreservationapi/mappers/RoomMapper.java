@@ -16,4 +16,6 @@ public interface RoomMapper {
 
     void update(Room room);
 
+    Room readById(int id);
+
 }

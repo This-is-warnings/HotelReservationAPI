@@ -38,4 +38,10 @@ public class RoomController {
         roomService.update(room);
     }
 
+    @GetMapping("/{id}")
+    @ApiOperation("get room by id")
+    Room getRoomById(@PathVariable int id){
+        return roomService.getRoomById(id);
+    }
+
 }

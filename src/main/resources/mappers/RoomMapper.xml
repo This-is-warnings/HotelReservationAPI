@@ -38,4 +38,10 @@
         WHERE id = #{id};
     </update>
 
+    <select id="readById" resultMap="RoomResultMap">
+        select *
+        from rooms
+        where rooms.id = #{id}
+    </select>
+
 </mapper>

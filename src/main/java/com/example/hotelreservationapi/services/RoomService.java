@@ -14,4 +14,6 @@ public interface RoomService {
 
     void update(Room room);
 
+    Room getRoomById(int id);
+
 }

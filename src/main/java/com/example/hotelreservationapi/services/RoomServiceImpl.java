@@ -32,4 +32,9 @@ public class RoomServiceImpl implements RoomService {
     public void update(Room room) {
         roomMapper.update(room);
     }
+
+    @Override
+    public Room getRoomById(int id) {
+        return roomMapper.readById(id);
+    }
 }
