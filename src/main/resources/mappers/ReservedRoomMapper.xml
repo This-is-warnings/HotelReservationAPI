@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hotelreservationapi.mappers.ReservedRoomMapper">
+    <resultMap id="ReservedRoomResultMap" type="com.example.hotelreservationapi.domains.ReservedRoom">
+        <id property="id" column="id"/>
+        <result property="price" column="price"/>
+        <result property="startDate" column="start_date"/>
+        <result property="endDate" column="end_date"/>
+        <result property="isPaid" column="is_paid"/>
+        <association property="user" column="user_id" javaType="com.example.hotelreservationapi.domains.User">
+            <id property="id" column="uId"/>
+            <result property="login" column="login"/>
+            <result property="password" column="password"/>
+            <result property="name" column="name"/>
+            <result property="surname" column="surname"/>
+            <result property="middlename" column="middlename"/>
+            <result property="email" column="email"/>
+        </association>
+        <association property="room" column="room_id" javaType="com.example.hotelreservationapi.domains.Room">
+            <id property="id" column="rId"/>
+            <result property="number" column="number"/>
+            <result property="numberOfRooms" column="number_of_rooms"/>
+            <result property="roomClass" column="class"/>
+            <result property="surname" column="surname"/>
+            <result property="pricePerDay" column="price_per_day"/>
+            <result property="isFree" column="is_free"/>
+        </association>
+    </resultMap>
+
+    <select id="read" resultMap="ReservedRoomResultMap">
+        select reserved_rooms.id,
+               reserved_rooms.price,
+               reserved_rooms.start_date,
+               reserved_rooms.end_date,
+               reserved_rooms.is_paid,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email,
+               rooms.id as rId,
+               rooms.number,
+               rooms.number_of_rooms,
+               rooms.class,
+               rooms.price_per_day,
+               rooms.is_free
+        from reserved_rooms
+                 left JOIN users on reserved_rooms.user_id = users.id
+                left join rooms on reserved_rooms.room_id = rooms.id
+    </select>
+
+    <insert id="create">
+        insert into reserved_rooms(user_id,room_id, price,start_date,end_date,is_paid)
+        values (#{user.id}, #{room.id}, #{price}, #{startDate}, #{endDate}, false5)
+    </insert>
+
+    <delete id="delete">
+        delete from reserved_rooms
+        where id = #{id}
+    </delete>
+</mapper>
