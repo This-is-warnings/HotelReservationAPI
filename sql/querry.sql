@@ -119,3 +119,7 @@ alter table reserved_rooms rename column role_id to room_id;
 alter index reserved_rooms_user_id_role_id_uindex rename to reserved_rooms_user_id_room_id_uindex;
 
 alter table reserved_rooms rename column "isPaid" to is_paid;
+
+alter table reserved_rooms rename column is_paid to status;
+
+alter table reserved_rooms alter column status type varchar(16) using status::varchar(16);

@@ -9,7 +9,7 @@ public class ReservedRoom {
 
     private float price;
 
-    private boolean isPaid;
+    private String status;
 
     private Date startDate;
 
@@ -18,16 +18,6 @@ public class ReservedRoom {
     private User user;
 
     private Room room;
-    /* getters and setters */
-
-    /*public ReservedRoom(int id, float price,
-                         Date startDate, Date endDate, boolean isPaid){
-        this.id = id;
-        this.price = price;
-        this.isPaid = isPaid;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }*/
 
     public int getId() {
         return id;
@@ -61,14 +51,6 @@ public class ReservedRoom {
         this.price = price;
     }
 
-    public boolean isPaid() {
-        return isPaid;
-    }
-
-    public void setPaid(boolean paid) {
-        isPaid = paid;
-    }
-
     public Date getStartDate() {
         return startDate;
     }
@@ -96,5 +78,13 @@ public class ReservedRoom {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

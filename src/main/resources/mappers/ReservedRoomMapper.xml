@@ -9,7 +9,7 @@
         <result property="price" column="price"/>
         <result property="startDate" column="start_date"/>
         <result property="endDate" column="end_date"/>
-        <result property="isPaid" column="is_paid"/>
+        <result property="status" column="status"/>
         <association property="user" column="user_id" javaType="com.example.hotelreservationapi.domains.User">
             <id property="id" column="uId"/>
             <result property="login" column="login"/>
@@ -34,7 +34,7 @@
                reserved_rooms.price,
                reserved_rooms.start_date,
                reserved_rooms.end_date,
-               reserved_rooms.is_paid,
+               reserved_rooms.status,
                users.id as uId,
                users.login,
                users.password,
@@ -54,8 +54,8 @@
     </select>
 
     <insert id="create">
-        insert into reserved_rooms(user_id, room_id, price, start_date, end_date, is_paid)
-        values (#{user.id}, #{room.id}, #{price}, #{startDate}, #{endDate}, false5)
+        insert into reserved_rooms(user_id, room_id, price, start_date, end_date, status)
+        values (#{user.id}, #{room.id}, #{price}, #{startDate}, #{endDate}, #{status})
     </insert>
 
     <delete id="delete">
