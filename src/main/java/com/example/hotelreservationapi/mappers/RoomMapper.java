@@ -1,5 +1,6 @@
 package com.example.hotelreservationapi.mappers;
 
+import com.example.hotelreservationapi.domains.Request;
 import com.example.hotelreservationapi.domains.Room;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -17,5 +18,7 @@ public interface RoomMapper {
     void update(Room room);
 
     Room readById(int id);
+
+    ArrayList<Room> readSuitableRooms(int numberOfRooms, String roomClass);
 
 }

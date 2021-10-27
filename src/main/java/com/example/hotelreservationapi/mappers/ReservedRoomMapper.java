@@ -18,4 +18,6 @@ public interface ReservedRoomMapper {
 
     ArrayList<ReservedRoom> readByStatus(String status);
 
+    ArrayList<ReservedRoom> readByRoom(int roomId);
+
 }

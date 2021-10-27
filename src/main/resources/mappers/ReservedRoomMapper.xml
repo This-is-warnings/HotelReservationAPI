@@ -78,6 +78,31 @@
         where reserved_rooms.status = #{status}
     </select>
 
+    <select id="readByRoom" resultMap="ReservedRoomResultMap">
+        select reserved_rooms.id,
+               reserved_rooms.price,
+               reserved_rooms.start_date,
+               reserved_rooms.end_date,
+               reserved_rooms.status,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email,
+               rooms.id as rId,
+               rooms.number,
+               rooms.number_of_rooms,
+               rooms.class,
+               rooms.price_per_day,
+               rooms.is_free
+        from reserved_rooms
+                 left JOIN users on reserved_rooms.user_id = users.id
+                 left JOIN rooms on reserved_rooms.room_id = rooms.id
+        where reserved_rooms.room_id = #{roomId}
+    </select>
+
     <insert id="create">
         insert into reserved_rooms(user_id, room_id, price, start_date, end_date, status)
         values (#{user.id}, #{room.id}, #{price}, #{startDate}, #{endDate}, #{status})

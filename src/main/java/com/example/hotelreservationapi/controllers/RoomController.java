@@ -1,5 +1,6 @@
 package com.example.hotelreservationapi.controllers;
 
+import com.example.hotelreservationapi.domains.Request;
 import com.example.hotelreservationapi.domains.Room;
 import com.example.hotelreservationapi.services.RoomService;
 import io.swagger.annotations.ApiOperation;
@@ -42,6 +43,12 @@ public class RoomController {
     @ApiOperation("get room by id")
     Room getRoomById(@PathVariable int id){
         return roomService.getRoomById(id);
+    }
+
+    @PostMapping("/suitable")
+    @ApiOperation("get suitable rooms")
+    ArrayList<Room> getSuitableRooms(@RequestBody Request request){
+        return roomService.getSuitableRoom(request);
     }
 
 }

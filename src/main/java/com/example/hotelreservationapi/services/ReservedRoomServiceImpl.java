@@ -38,5 +38,9 @@ public class ReservedRoomServiceImpl implements ReservedRoomService{
         return reservedRoomMapper.readByStatus(status);
     }
 
+    @Override
+    public ArrayList<ReservedRoom> getByRoom(int roomId) {
+        return reservedRoomMapper.readByRoom(roomId);
+    }
 
 }

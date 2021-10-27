@@ -44,4 +44,22 @@
         where rooms.id = #{id}
     </select>
 
+    <select id="readSuitableRooms" resultMap="RoomResultMap">
+        select *
+        from rooms
+        where rooms.number_of_rooms = #{numberOfRooms} AND
+              rooms.class = #{roomClass}
+    </select>
+
+    <!--select *
+    from rooms
+    where rooms.id not in (
+    select r1.id
+    from rooms r1
+    left join reserved_rooms rr1 on r1.id = rr1.room_id
+    where ('2021-10-20' < rr1.end_date AND '2021-10-20' > rr1.start_date)
+    OR ('2021-11-12' < rr1.end_date AND '2021-11-12' > rr1.start_date)
+    OR ('2021-11-12' > rr1.end_date AND '2021-10-20' < rr1.start_date)
+    );-->
+
 </mapper>

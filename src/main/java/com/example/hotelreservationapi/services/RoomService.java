@@ -1,5 +1,6 @@
 package com.example.hotelreservationapi.services;
 
+import com.example.hotelreservationapi.domains.Request;
 import com.example.hotelreservationapi.domains.Room;
 
 import java.util.ArrayList;
@@ -15,5 +16,7 @@ public interface RoomService {
     void update(Room room);
 
     Room getRoomById(int id);
+
+    ArrayList<Room> getSuitableRoom(Request request);
 
 }
