@@ -88,6 +88,25 @@
         where requests.id = #{id}
     </select>
 
+    <select id="readByStatus" resultMap="RequestResultMap">
+        select requests.id,
+               requests.number_of_rooms,
+               requests.class,
+               requests.start_date,
+               requests.end_date,
+               requests.status,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        from requests
+                 left JOIN users on requests.user_id = users.id
+        where requests.status = #{status}
+    </select>
+
     <delete id="deleteRequest">
         delete
         from requests

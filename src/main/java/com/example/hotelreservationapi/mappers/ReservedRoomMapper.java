@@ -16,4 +16,6 @@ public interface ReservedRoomMapper {
 
     void updateStatus(int id, String status);
 
+    ArrayList<ReservedRoom> readByStatus(String status);
+
 }

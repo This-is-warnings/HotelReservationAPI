@@ -39,6 +39,11 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
+    public ArrayList<Request> getByStatus(String status) {
+        return requestMapper.readByStatus(status);
+    }
+
+    @Override
     public Request getById(int id){
         return requestMapper.readById(id);
     }

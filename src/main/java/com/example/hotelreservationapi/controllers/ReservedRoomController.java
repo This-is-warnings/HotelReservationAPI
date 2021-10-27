@@ -39,4 +39,10 @@ public class ReservedRoomController {
         reservedRoomService.updateReservedRoomStatus(id, status);
     }
 
+    @PostMapping("/status")
+    @ApiOperation("get reserved roooms by status")
+    ArrayList<ReservedRoom> getReservedRoomByStatus(@RequestBody String status){
+        return reservedRoomService.getByStatus(status);
+    }
+
 }

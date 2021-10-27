@@ -51,4 +51,9 @@ public class RequestController {
         requestService.delete(id);
     }
 
+    @PostMapping("/status")
+    @ApiOperation("get requests by status")
+    ArrayList<Request> getRequestsByStatus(@RequestBody String status){
+        return requestService.getByStatus(status);
+    }
 }

@@ -20,4 +20,6 @@ public interface RequestMapper {
 
     void updateStatus(int id, String newStatus);
 
+    ArrayList<Request> readByStatus(String status);
+
 }

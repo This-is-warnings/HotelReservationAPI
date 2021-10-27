@@ -33,5 +33,10 @@ public class ReservedRoomServiceImpl implements ReservedRoomService{
         reservedRoomMapper.updateStatus(id, status);
     }
 
+    @Override
+    public ArrayList<ReservedRoom> getByStatus(String status) {
+        return reservedRoomMapper.readByStatus(status);
+    }
+
 
 }
