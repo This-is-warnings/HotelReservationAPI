@@ -14,7 +14,6 @@ public class Room {
 
     private float pricePerDay;
 
-    private boolean isFree;
 
     /*public Room(int id, int number, int numberOfRooms, String roomClass,
                 float pricePerDay, boolean isFree){
@@ -64,14 +63,6 @@ public class Room {
 
     public void setPricePerDay(float pricePerDay) {
         this.pricePerDay = pricePerDay;
-    }
-
-    public boolean isFree() {
-        return isFree;
-    }
-
-    public void setFree(boolean free) {
-        isFree = free;
     }
 
     @Override

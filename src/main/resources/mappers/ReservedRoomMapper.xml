@@ -25,7 +25,6 @@
             <result property="numberOfRooms" column="number_of_rooms"/>
             <result property="roomClass" column="class"/>
             <result property="pricePerDay" column="price_per_day"/>
-            <result property="isFree" column="is_free"/>
         </association>
     </resultMap>
 
@@ -46,8 +45,7 @@
                rooms.number,
                rooms.number_of_rooms,
                rooms.class,
-               rooms.price_per_day,
-               rooms.is_free
+               rooms.price_per_day
         from reserved_rooms
                  left JOIN users on reserved_rooms.user_id = users.id
                  left JOIN rooms on reserved_rooms.room_id = rooms.id
@@ -70,8 +68,7 @@
                rooms.number,
                rooms.number_of_rooms,
                rooms.class,
-               rooms.price_per_day,
-               rooms.is_free
+               rooms.price_per_day
         from reserved_rooms
                  left JOIN users on reserved_rooms.user_id = users.id
                  left JOIN rooms on reserved_rooms.room_id = rooms.id
@@ -95,8 +92,7 @@
                rooms.number,
                rooms.number_of_rooms,
                rooms.class,
-               rooms.price_per_day,
-               rooms.is_free
+               rooms.price_per_day
         from reserved_rooms
                  left JOIN users on reserved_rooms.user_id = users.id
                  left JOIN rooms on reserved_rooms.room_id = rooms.id

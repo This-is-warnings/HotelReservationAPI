@@ -111,6 +111,8 @@ alter table rooms rename column "isFree" to is_free;
 
 create unique index rooms_number_uindex
 	on rooms (number);
+
+alter table rooms drop column is_free;
 	
 -- table reserved_rooms
 
