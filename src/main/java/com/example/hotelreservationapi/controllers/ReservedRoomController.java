@@ -9,27 +9,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
+@RequestMapping("reservedRoom")
 public class ReservedRoomController {
 
     @Autowired
     ReservedRoomService reservedRoomService;
 
-    @GetMapping("reservedRoom")
+    @GetMapping
     @ApiOperation("get all reserved rooms")
-    ArrayList<ReservedRoom> getAllReservedRooms(){
+    ArrayList<ReservedRoom> getAllReservedRooms() {
         return reservedRoomService.getAllReservedRooms();
     }
 
-    @PostMapping("reservedRoom")
+    @PostMapping
     @ApiOperation("add reserved room")
-    void addReservedRoom(@RequestBody ReservedRoom reservedRoom){
+    void addReservedRoom(@RequestBody ReservedRoom reservedRoom) {
         reservedRoomService.addReservedRoom(reservedRoom);
     }
 
-    @DeleteMapping("reservedRoom/{id}")
+    @DeleteMapping("/{id}")
     @ApiOperation("delete reserved room")
-    void deleteReservedRoom(@PathVariable int id){
+    void deleteReservedRoom(@PathVariable int id) {
         reservedRoomService.deleteReservedRoom(id);
+    }
+
+    @PutMapping("/{id}")
+    @ApiOperation("update reserved room status")
+    void updateReservedRoomStatus(@PathVariable int id, @RequestBody String status) {
+        reservedRoomService.updateReservedRoomStatus(id, status);
     }
 
 }

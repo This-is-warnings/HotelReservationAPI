@@ -12,4 +12,6 @@ public interface ReservedRoomService {
 
     void deleteReservedRoom(int id);
 
+    void updateReservedRoomStatus(int id, String status);
+
 }

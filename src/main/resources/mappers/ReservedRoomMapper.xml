@@ -63,4 +63,11 @@
         from reserved_rooms
         where id = #{id}
     </delete>
+
+    <update id="updateStatus">
+        update reserved_rooms
+        set status = #{status}
+        where id = #{id}
+    </update>
+
 </mapper>
