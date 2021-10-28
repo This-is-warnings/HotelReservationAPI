@@ -19,19 +19,17 @@
         </collection>
 
     </resultMap>
-    <!--<resultMap id="RoleResultMap" type="com.example.springwebproject.domain.Role">
-        <result column="id" property="id"/>
-        <result column="name" property="name"/>
-    </resultMap>-->
-
-    <!--<select id="selectRolesForUser" resultMap="RoleResultMap" >
-        select  roles.id, roles.name from roles where users_roles.user_id = #{id} and user_roles.role_id = roles.id
-    </select>-->
 
     <select id="readById" resultMap="UserResultMap">
         select users.*, roles.id as rId, roles.name as rName
         from users, roles, users_roles
         where users.id = #{id} and users.id = users_roles.user_id and roles.id = users_roles.role_id
+    </select>
+
+    <select id="readByLogin" resultMap="UserResultMap">
+        select users.*, roles.id as rId, roles.name as rName
+        from users, roles, users_roles
+        where users.login = #{login} and users.id = users_roles.user_id and roles.id = users_roles.role_id
     </select>
 
     <select id="readAll" resultMap="UserResultMap">

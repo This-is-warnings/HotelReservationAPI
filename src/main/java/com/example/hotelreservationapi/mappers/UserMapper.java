@@ -16,9 +16,10 @@ public interface UserMapper {
 
     void delete(int id);
 
-    ArrayList<Role> selectRolesForUser(int id);
-
     User readById(int id);
 
     ArrayList<User> readAll();
+
+    User readByLogin(String login);
+
 }

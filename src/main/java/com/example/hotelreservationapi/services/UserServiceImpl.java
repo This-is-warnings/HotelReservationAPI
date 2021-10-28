@@ -4,6 +4,7 @@ import com.example.hotelreservationapi.domains.Role;
 import com.example.hotelreservationapi.domains.User;
 import com.example.hotelreservationapi.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     RoleService roleService;
+
+    BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 
     @Override
     public void createUser(User user) {
@@ -54,5 +57,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(int id) {
         return userMapper.readById(id);
+    }
+
+    @Override
+    public User getUserByLogin(String login){ return userMapper.readByLogin(login);}
+
+    @Override
+    public User checkAuth(String login, String password) {
+        User user = userMapper.readByLogin(login);
+        if(user != null && bCrypt.matches(password, user.getPassword())) return user;
+        return null;
     }
 }
