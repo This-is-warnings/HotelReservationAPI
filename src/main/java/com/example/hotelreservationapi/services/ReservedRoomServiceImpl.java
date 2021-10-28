@@ -43,4 +43,9 @@ public class ReservedRoomServiceImpl implements ReservedRoomService{
         return reservedRoomMapper.readByRoom(roomId);
     }
 
+    @Override
+    public ArrayList<ReservedRoom> getUserReservedRooms(int userId) {
+        return reservedRoomMapper.readUserReservedRooms(userId);
+    }
+
 }

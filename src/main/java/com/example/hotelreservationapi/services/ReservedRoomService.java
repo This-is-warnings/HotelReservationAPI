@@ -18,4 +18,6 @@ public interface ReservedRoomService {
 
     ArrayList<ReservedRoom> getByRoom(int roomId);
 
+    ArrayList<ReservedRoom> getUserReservedRooms(int userId);
+
 }

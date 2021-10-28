@@ -45,4 +45,10 @@ public class ReservedRoomController {
         return reservedRoomService.getByStatus(status);
     }
 
+    @GetMapping("/users/{id}")
+    @ApiOperation("get user reserved rooms")
+    ArrayList<ReservedRoom> getUserReservedRooms(@PathVariable int id){
+        return reservedRoomService.getUserReservedRooms(id);
+    }
+
 }

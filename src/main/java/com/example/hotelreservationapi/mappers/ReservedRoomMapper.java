@@ -20,4 +20,6 @@ public interface ReservedRoomMapper {
 
     ArrayList<ReservedRoom> readByRoom(int roomId);
 
+    ArrayList<ReservedRoom> readUserReservedRooms(int userId);
+
 }
