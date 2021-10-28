@@ -1,8 +1,10 @@
 package com.example.hotelreservationapi.domains;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import java.util.Objects;
 
-public class Role {
+public class Role implements GrantedAuthority {
 
     private int id;
 
@@ -40,5 +42,10 @@ public class Role {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }
