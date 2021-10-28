@@ -10,33 +10,33 @@
     </resultMap>
 
     <select id="read" resultMap="RoleResultMap">
-        select *
-        from roles
+        SELECT *
+        FROM roles
     </select>
 
     <select id="readAllUserRoles" resultMap="RoleResultMap">
-        select roles.id, roles.name
-        from roles,
+        SELECT roles.id, roles.name
+        FROM roles,
              users_roles
-        where users_roles.user_id = #{userId};
+        WHERE users_roles.user_id = #{userId};
     </select>
 
     <insert id="addRoleToUser">
-        insert into users_roles
-        values (#{userId}, #{roleId});
+        INSERT INTO users_roles
+        VALUES (#{userId}, #{roleId});
     </insert>
 
     <delete id="deleteRoleFromUser">
-        delete
-        from users_roles
-        where users_roles.user_id = #{userId}
+        DELETE
+        FROM users_roles
+        WHERE users_roles.user_id = #{userId}
           AND users_roles.role_id = #{roleId};
     </delete>
 
     <delete id="deleteAllUserRoles">
-        delete
-        from users_roles
-        where users_roles.user_id = #{userId}
+        DELETE
+        FROM users_roles
+        WHERE users_roles.user_id = #{userId}
     </delete>
 
 </mapper>

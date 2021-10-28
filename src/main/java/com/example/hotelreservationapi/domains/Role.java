@@ -10,7 +10,7 @@ public class Role implements GrantedAuthority {
 
     private String name;
 
-    public Role(int id, String name){
+    public Role(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -19,7 +19,7 @@ public class Role implements GrantedAuthority {
         return this.id;
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 

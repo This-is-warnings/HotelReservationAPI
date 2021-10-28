@@ -1,6 +1,5 @@
 package com.example.hotelreservationapi.mappers;
 
-import com.example.hotelreservationapi.domains.Role;
 import com.example.hotelreservationapi.domains.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

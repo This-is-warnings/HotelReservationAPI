@@ -14,17 +14,6 @@ public class Room {
 
     private float pricePerDay;
 
-
-    /*public Room(int id, int number, int numberOfRooms, String roomClass,
-                float pricePerDay, boolean isFree){
-        this.id = id;
-        this.number = number;
-        this.numberOfRooms = numberOfRooms;
-        this.roomClass = roomClass;
-        this.pricePerDay = pricePerDay;
-        this.isFree = isFree;
-    }*/
-
     public int getId() {
         return id;
     }

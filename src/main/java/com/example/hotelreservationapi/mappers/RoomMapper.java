@@ -1,6 +1,5 @@
 package com.example.hotelreservationapi.mappers;
 
-import com.example.hotelreservationapi.domains.Request;
 import com.example.hotelreservationapi.domains.Room;
 import org.apache.ibatis.annotations.Mapper;
 

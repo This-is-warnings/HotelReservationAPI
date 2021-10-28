@@ -48,9 +48,9 @@ public class RoomServiceImpl implements RoomService {
     public ArrayList<Room> getSuitableRoom(Request request) {
         ArrayList<Room> rooms = roomMapper.readSuitableRooms(request.getNumberOfRooms(), request.getRoomClass());
         ArrayList<Room> suitableRooms = new ArrayList<>();
-        for (Room room:
-             rooms) {
-            if(isFreeRoom(request.getStartDate(),request.getEndDate(),reservedRoomService.getByRoom(room.getId()))){
+        for (Room room :
+                rooms) {
+            if (isFreeRoom(request.getStartDate(), request.getEndDate(), reservedRoomService.getByRoom(room.getId()))) {
                 suitableRooms.add(room);
             }
         }
@@ -59,8 +59,8 @@ public class RoomServiceImpl implements RoomService {
 
     private boolean isFreeRoom(Date requestStartDate, Date requestEndDate, ArrayList<ReservedRoom> reservedRooms) {
 
-        for (ReservedRoom reservedRoom:
-             reservedRooms) {
+        for (ReservedRoom reservedRoom :
+                reservedRooms) {
             if (requestStartDate.compareTo(reservedRoom.getEndDate()) < 0 && requestStartDate.compareTo(reservedRoom.getStartDate()) > 0)
                 return false;
             if (requestEndDate.compareTo(reservedRoom.getEndDate()) < 0 && requestEndDate.compareTo(reservedRoom.getStartDate()) > 0)

@@ -41,13 +41,13 @@ public class ReservedRoomController {
 
     @PostMapping("/status")
     @ApiOperation("get reserved roooms by status")
-    ArrayList<ReservedRoom> getReservedRoomByStatus(@RequestBody String status){
+    ArrayList<ReservedRoom> getReservedRoomByStatus(@RequestBody String status) {
         return reservedRoomService.getByStatus(status);
     }
 
     @GetMapping("/users/{id}")
     @ApiOperation("get user reserved rooms")
-    ArrayList<ReservedRoom> getUserReservedRooms(@PathVariable int id){
+    ArrayList<ReservedRoom> getUserReservedRooms(@PathVariable int id) {
         return reservedRoomService.getUserReservedRooms(id);
     }
 

@@ -35,25 +35,25 @@ public class RequestController {
 
     @PostMapping()
     @ApiOperation("add request")
-    void addRequest(@RequestBody Request request){
+    void addRequest(@RequestBody Request request) {
         requestService.add(request);
     }
 
     @PutMapping("/{id}")
     @ApiOperation("update request status")
-    void updateRequestStatus(@PathVariable(name = "id") int id, @RequestBody String newStatus){
+    void updateRequestStatus(@PathVariable(name = "id") int id, @RequestBody String newStatus) {
         requestService.updateStatus(id, newStatus);
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete request")
-    void deleteRequest(@PathVariable(name = "id") int id){
+    void deleteRequest(@PathVariable(name = "id") int id) {
         requestService.delete(id);
     }
 
     @PostMapping("/status")
     @ApiOperation("get requests by status")
-    ArrayList<Request> getRequestsByStatus(@RequestBody String status){
+    ArrayList<Request> getRequestsByStatus(@RequestBody String status) {
         return requestService.getByStatus(status);
     }
 }

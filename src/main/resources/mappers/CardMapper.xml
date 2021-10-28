@@ -19,31 +19,31 @@
         </association>
     </resultMap>
 
-    <!--<resultMap id="UserResultMap" type="com.example.hotelreservationapi.domains.User">
-        <result column="id" property="id"/>
-        <result column="login" property="login"/>
-        <result column="password" property="password"/>
-        <result column="name" property="name"/>
-        <result column="surname" property="surname"/>
-        <result column="middlename" property="middlename"/>
-        <result column="email" property="email"/>
-    </resultMap>-->
-
     <select id="readUserCards" resultMap="CardResultMap">
-        select cards.id, cards.number, cards.balance, users.id as uId, users.login, users.password, users.name, users.surname, users.middlename,users.email
-        from cards left JOIN users on cards.user_id = users.id
-        where cards.user_id = #{userId}
+        SELECT cards.id,
+               cards.number,
+               cards.balance,
+               users.id AS uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        FROM cards
+                 LEFT JOIN users ON cards.user_id = users.id
+        WHERE cards.user_id = #{userId}
     </select>
 
     <insert id="create">
-        insert into cards(user_id, number)
-        values (#{card.user.id}, #{card.number});
+        INSERT INTO cards(user_id, number)
+        VALUES (#{card.user.id}, #{card.number});
     </insert>
 
     <delete id="delete">
-        delete
-        from cards
-        where id = #{id}
+        DELETE
+        FROM cards
+        WHERE id = #{id}
     </delete>
 
     <update id="updateBalance">
@@ -53,9 +53,19 @@
     </update>
 
     <select id="readById" resultMap="CardResultMap">
-        select cards.id, cards.number, cards.balance, users.id as uId, users.login, users.password, users.name, users.surname, users.middlename,users.email
-        from cards left JOIN users on cards.user_id = users.id
-        where cards.id = #{id}
+        SELECT cards.id,
+               cards.number,
+               cards.balance,
+               users.id AS uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        FROM cards
+                 LEFT JOIN users ON cards.user_id = users.id
+        WHERE cards.id = #{id}
     </select>
 
 </mapper>

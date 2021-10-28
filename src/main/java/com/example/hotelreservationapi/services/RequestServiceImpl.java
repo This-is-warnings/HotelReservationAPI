@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class RequestServiceImpl implements RequestService{
+public class RequestServiceImpl implements RequestService {
 
     @Autowired
     RequestMapper requestMapper;
@@ -44,7 +44,7 @@ public class RequestServiceImpl implements RequestService{
     }
 
     @Override
-    public Request getById(int id){
+    public Request getById(int id) {
         return requestMapper.readById(id);
     }
 

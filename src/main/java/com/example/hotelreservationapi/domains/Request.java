@@ -20,7 +20,7 @@ public class Request {
     private String status;
 
     public Request(int id, int numberOfRooms,
-                   String roomClass, Date startDate, Date endDate, String status){
+                   String roomClass, Date startDate, Date endDate, String status) {
         this.id = id;
         this.numberOfRooms = numberOfRooms;
         this.roomClass = roomClass;

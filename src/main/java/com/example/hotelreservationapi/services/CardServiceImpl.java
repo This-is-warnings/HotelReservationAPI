@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class CardServiceImpl implements CardService{
+public class CardServiceImpl implements CardService {
 
     @Autowired
     CardMapper cardMapper;
@@ -31,7 +31,7 @@ public class CardServiceImpl implements CardService{
 
     @Override
     public void updateBalance(int id, float balance) {
-        cardMapper.updateBalance(id,balance);
+        cardMapper.updateBalance(id, balance);
     }
 
     @Override

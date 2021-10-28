@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class RoleServiceImpl implements RoleService{
+public class RoleServiceImpl implements RoleService {
 
     @Autowired
     RoleMapper roleMapper;
@@ -25,7 +25,6 @@ public class RoleServiceImpl implements RoleService{
 
     @Override
     public void addRoleToUser(int userId, int roleId) {
-        System.out.println("add role \nuserId "+ userId + " roleId " + roleId );
         roleMapper.addRoleToUser(userId, roleId);
     }
 

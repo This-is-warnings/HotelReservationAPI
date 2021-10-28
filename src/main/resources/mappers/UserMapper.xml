@@ -21,44 +21,52 @@
     </resultMap>
 
     <select id="readById" resultMap="UserResultMap">
-        select users.*, roles.id as rId, roles.name as rName
-        from users, roles, users_roles
-        where users.id = #{id} and users.id = users_roles.user_id and roles.id = users_roles.role_id
+        SELECT users.*, roles.id AS rId, roles.name AS rName
+        FROM users,
+             roles,
+             users_roles
+        WHERE users.id = #{id}
+          AND users.id = users_roles.user_id
+          AND roles.id = users_roles.role_id
     </select>
 
     <select id="readByLogin" resultMap="UserResultMap">
-        select users.*, roles.id as rId, roles.name as rName
-        from users, roles, users_roles
-        where users.login = #{login} and users.id = users_roles.user_id and roles.id = users_roles.role_id
+        SELECT users.*, roles.id AS rId, roles.name AS rName
+        FROM users,
+             roles,
+             users_roles
+        WHERE users.login = #{login}
+          AND users.id = users_roles.user_id
+          AND roles.id = users_roles.role_id
     </select>
 
     <select id="readAll" resultMap="UserResultMap">
-        select users.id,
+        SELECT users.id,
                users.login,
                users.password,
                users.name,
                users.surname,
                users.middlename,
                users.email,
-               roles.id   as rId,
-               roles.name as rName
-        from users,
+               roles.id   AS rId,
+               roles.name AS rName
+        FROM users,
              roles,
              users_roles
-        where users.id = users_roles.user_id
-          and roles.id = users_roles.role_id
+        WHERE users.id = users_roles.user_id
+          AND roles.id = users_roles.role_id
     </select>
 
     <select id="create" resultType="int">
-        insert into users(login, password, name, surname, middlename, email)
-        values (#{user.login},#{user.password}, #{user.name}, #{user.surname}, #{user.middlename}, #{user.email})
-        RETURNING id
+        INSERT INTO users(login, password, name, surname, middlename, email)
+        VALUES (#{user.login}, #{user.password}, #{user.name}, #{user.surname}, #{user.middlename},
+                #{user.email}) RETURNING id
     </select>
 
     <delete id="delete">
-        delete
-        from users
-        where id = #{id}
+        DELETE
+        FROM users
+        WHERE id = #{id}
     </delete>
 
     <update id="update">

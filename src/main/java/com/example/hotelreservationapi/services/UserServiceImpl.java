@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public void createUser(User user) {
         int userId = userMapper.create(user);
-        for (Role role:
-             user.getRoles()) {
+        for (Role role :
+                user.getRoles()) {
             roleService.addRoleToUser(userId, role.getId());
         }
     }
@@ -60,12 +60,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByLogin(String login){ return userMapper.readByLogin(login);}
+    public User getUserByLogin(String login) {
+        return userMapper.readByLogin(login);
+    }
 
     @Override
     public User checkAuth(String login, String password) {
         User user = userMapper.readByLogin(login);
-        if(user != null && bCrypt.matches(password, user.getPassword())) return user;
+        if (user != null && bCrypt.matches(password, user.getPassword())) return user;
         return null;
     }
 }

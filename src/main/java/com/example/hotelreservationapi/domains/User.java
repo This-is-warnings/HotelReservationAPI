@@ -1,7 +1,6 @@
 package com.example.hotelreservationapi.domains;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -23,7 +22,7 @@ public class User {
     private ArrayList<Role> roles;
 
     public User(int id, String login, String password, String name,
-                String surname, String middlename, String email){
+                String surname, String middlename, String email) {
         this.id = id;
         this.login = login;
         this.password = password;

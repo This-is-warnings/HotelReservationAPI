@@ -22,18 +22,8 @@
         </association>
     </resultMap>
 
-    <!--<resultMap id="UserResultMap" type="com.example.hotelreservationapi.domains.User">
-        <result column="id" property="id"/>
-        <result column="login" property="login"/>
-        <result column="password" property="password"/>
-        <result column="name" property="name"/>
-        <result column="surname" property="surname"/>
-        <result column="middlename" property="middlename"/>
-        <result column="email" property="email"/>
-    </resultMap>-->
-
     <select id="read" resultMap="RequestResultMap">
-        select requests.id,
+        SELECT requests.id,
                requests.number_of_rooms,
                requests.class,
                requests.start_date,
@@ -46,12 +36,12 @@
                users.surname,
                users.middlename,
                users.email
-        from requests
-                 left JOIN users on requests.user_id = users.id
+        FROM requests
+                 LEFT JOIN users ON requests.user_id = users.id
     </select>
 
     <select id="readUserRequests" resultMap="RequestResultMap">
-        select requests.id,
+        SELECT requests.id,
                requests.number_of_rooms,
                requests.class,
                requests.start_date,
@@ -64,13 +54,13 @@
                users.surname,
                users.middlename,
                users.email
-        from requests
-                 left JOIN users on requests.user_id = users.id
-        where requests.user_id = #{userId}
+        FROM requests
+                 LEFT JOIN users ON requests.user_id = users.id
+        WHERE requests.user_id = #{userId}
     </select>
 
     <select id="readById" resultMap="RequestResultMap">
-        select requests.id,
+        SELECT requests.id,
                requests.number_of_rooms,
                requests.class,
                requests.start_date,
@@ -83,13 +73,13 @@
                users.surname,
                users.middlename,
                users.email
-        from requests
-                 left JOIN users on requests.user_id = users.id
-        where requests.id = #{id}
+        FROM requests
+                 LEFT JOIN users ON requests.user_id = users.id
+        WHERE requests.id = #{id}
     </select>
 
     <select id="readByStatus" resultMap="RequestResultMap">
-        select requests.id,
+        SELECT requests.id,
                requests.number_of_rooms,
                requests.class,
                requests.start_date,
@@ -102,20 +92,20 @@
                users.surname,
                users.middlename,
                users.email
-        from requests
-                 left JOIN users on requests.user_id = users.id
-        where requests.status = #{status}
+        FROM requests
+                 LEFT JOIN users ON requests.user_id = users.id
+        WHERE requests.status = #{status}
     </select>
 
     <delete id="deleteRequest">
-        delete
-        from requests
-        where id = #{id}
+        DELETE
+        FROM requests
+        WHERE id = #{id}
     </delete>
 
     <insert id="create">
-        insert into requests(user_id, number_of_rooms, class, start_date,end_date, status)
-        values (#{user.id},
+        INSERT INTO requests(user_id, number_of_rooms, class, start_date, end_date, status)
+        VALUES (#{user.id},
                 #{numberOfRooms},
                 #{roomClass},
                 #{startDate},
@@ -124,9 +114,9 @@
     </insert>
 
     <update id="updateStatus">
-        update requests
-        set status = #{newStatus}
-        where id = #{id}
+        UPDATE requests
+        SET status = #{newStatus}
+        WHERE id = #{id}
     </update>
 
 </mapper>

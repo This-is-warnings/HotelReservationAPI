@@ -13,41 +13,41 @@
     </resultMap>
 
     <select id="read" resultMap="RoomResultMap">
-        select *
-        from rooms
+        SELECT *
+        FROM rooms
     </select>
 
     <insert id="create">
-        insert into rooms(number,number_of_rooms,class,price_per_day)
-        values (#{number}, #{numberOfRooms}, #{roomClass}, #{pricePerDay});
+        INSERT INTO rooms(number, number_of_rooms, class, price_per_day)
+        VALUES (#{number}, #{numberOfRooms}, #{roomClass}, #{pricePerDay});
     </insert>
 
     <delete id="delete">
-        delete
-        from rooms
-        where id = #{id}
+        DELETE
+        FROM rooms
+        WHERE id = #{id}
     </delete>
 
     <update id="update">
         UPDATE rooms
-        SET number   = #{number},
-            number_of_rooms       = #{numberOfRooms},
-            class    = #{roomClass},
-            price_per_day = #{pricePerDay}
+        SET number          = #{number},
+            number_of_rooms = #{numberOfRooms},
+            class           = #{roomClass},
+            price_per_day   = #{pricePerDay}
         WHERE id = #{id};
     </update>
 
     <select id="readById" resultMap="RoomResultMap">
-        select *
-        from rooms
-        where rooms.id = #{id}
+        SELECT *
+        FROM rooms
+        WHERE rooms.id = #{id}
     </select>
 
     <select id="readSuitableRooms" resultMap="RoomResultMap">
-        select *
-        from rooms
-        where rooms.number_of_rooms = #{numberOfRooms} AND
-              rooms.class = #{roomClass}
+        SELECT *
+        FROM rooms
+        WHERE rooms.number_of_rooms = #{numberOfRooms}
+          AND rooms.class = #{roomClass}
     </select>
 
     <!--select *

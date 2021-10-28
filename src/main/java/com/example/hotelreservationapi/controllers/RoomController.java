@@ -17,37 +17,37 @@ public class RoomController {
 
     @GetMapping
     @ApiOperation("get all rooms")
-    ArrayList<Room> getAllRooms(){
+    ArrayList<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 
     @PostMapping
     @ApiOperation("add room")
-    void addRoom(@RequestBody Room room){
+    void addRoom(@RequestBody Room room) {
         roomService.add(room);
     }
 
     @DeleteMapping("/{id}")
     @ApiOperation("delete room")
-    void deleteRoom(@PathVariable(name = "id") int id){
+    void deleteRoom(@PathVariable(name = "id") int id) {
         roomService.delete(id);
     }
 
     @PutMapping
     @ApiOperation("update room")
-    void updateRoom(@RequestBody Room room){
+    void updateRoom(@RequestBody Room room) {
         roomService.update(room);
     }
 
     @GetMapping("/{id}")
     @ApiOperation("get room by id")
-    Room getRoomById(@PathVariable int id){
+    Room getRoomById(@PathVariable int id) {
         return roomService.getRoomById(id);
     }
 
     @PostMapping("/suitable")
     @ApiOperation("get suitable rooms")
-    ArrayList<Room> getSuitableRooms(@RequestBody Request request){
+    ArrayList<Room> getSuitableRooms(@RequestBody Request request) {
         return roomService.getSuitableRoom(request);
     }
 

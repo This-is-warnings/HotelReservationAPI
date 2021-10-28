@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class ReservedRoomServiceImpl implements ReservedRoomService{
+public class ReservedRoomServiceImpl implements ReservedRoomService {
 
     @Autowired
     ReservedRoomMapper reservedRoomMapper;
@@ -19,7 +19,7 @@ public class ReservedRoomServiceImpl implements ReservedRoomService{
     }
 
     @Override
-    public void addReservedRoom(ReservedRoom reservedRoom){
+    public void addReservedRoom(ReservedRoom reservedRoom) {
         reservedRoomMapper.create(reservedRoom);
     }
 

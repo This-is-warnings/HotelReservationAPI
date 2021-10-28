@@ -18,13 +18,6 @@ public class Card {
         this.balance = balance;
     }
 
-    /*public Card(int id, String number, float balance, User user){
-        this.id = id;
-        this.number = number;
-        this.balance = balance;
-        this.user = user;
-    }*/
-
     public int getId() {
         return id;
     }
