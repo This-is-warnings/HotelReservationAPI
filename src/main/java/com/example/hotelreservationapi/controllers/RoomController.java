@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("rooms")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RoomController {
     @Autowired
     RoomService roomService;

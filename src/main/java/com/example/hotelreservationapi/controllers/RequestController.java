@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 @RestController
 @RequestMapping("requests")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RequestController {
 
     @Autowired
