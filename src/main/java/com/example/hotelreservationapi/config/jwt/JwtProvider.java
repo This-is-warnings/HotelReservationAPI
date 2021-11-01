@@ -24,6 +24,7 @@ public class JwtProvider {
         return Jwts.builder()
                 .setSubject(user.getLogin())
                 .claim("roles", user.getRoles())
+                .claim("id", user.getId())
                 .setExpiration(date)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret).compact();
     }
