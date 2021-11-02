@@ -14,8 +14,8 @@ public class CardServiceImpl implements CardService {
     CardMapper cardMapper;
 
     @Override
-    public void createCard(Card card) {
-        cardMapper.create(card);
+    public void createCard(int userId, String number) {
+        cardMapper.create(userId, number);
     }
 
     @Override

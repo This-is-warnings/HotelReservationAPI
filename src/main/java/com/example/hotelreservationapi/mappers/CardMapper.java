@@ -9,7 +9,7 @@ import java.util.ArrayList;
 @Mapper
 public interface CardMapper {
 
-    void create(@Param("card") Card card);
+    void create(int userId, String number);
 
     void delete(int id);
 

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public interface CardService {
 
-    void createCard(Card card);
+    void createCard(int userId, String number);
 
     void deleteCard(int id);
 

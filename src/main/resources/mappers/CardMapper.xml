@@ -37,7 +37,7 @@
 
     <insert id="create">
         INSERT INTO cards(user_id, number)
-        VALUES (#{card.user.id}, #{card.number});
+        VALUES (#{userId}, #{number});
     </insert>
 
     <delete id="delete">
@@ -48,7 +48,7 @@
 
     <update id="updateBalance">
         UPDATE cards
-        SET balance = #{balance}
+        SET balance = balance + #{balance}
         WHERE id = #{id};
     </update>
 

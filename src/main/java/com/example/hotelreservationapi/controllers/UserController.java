@@ -59,13 +59,13 @@ public class UserController {
 
     @PostMapping("/{id}/cards")
     @ApiOperation("Add card to user")
-    void addCard(@PathVariable(name = "id") int id, @RequestBody Card card) {
-        cardService.createCard(card);
+    void addCard(@PathVariable(name = "id") int id, @RequestBody String number) {
+        cardService.createCard(id, number);
     }
 
     @PutMapping("/{id}/cards")
     @ApiOperation("update card balance")
-    void updateCardBalance(@PathVariable(name = "id") int id, float balance) {
+    void updateCardBalance(@PathVariable(name = "id") int id, @RequestBody float balance) {
         cardService.updateBalance(id, balance);
     }
 
