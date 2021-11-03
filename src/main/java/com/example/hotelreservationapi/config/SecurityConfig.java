@@ -45,13 +45,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
                 // rooms
                 .antMatchers("/rooms/**").hasRole("MANAGER")
+                .antMatchers(HttpMethod.GET, "/rooms/*").hasRole("CLIENT")
 
                 // requests
                 .antMatchers(HttpMethod.GET, "/requests").hasRole("MANAGER")
                 .antMatchers(HttpMethod.POST, "/requests").hasRole("CLIENT")
                 .antMatchers(HttpMethod.GET, "/requests/**").hasAnyRole("MANAGER", "CLIENT")
-                .antMatchers(HttpMethod.PUT, "/requests/**").hasRole("MANAGER")
-                .antMatchers(HttpMethod.DELETE, "/requests/**").hasRole("MANAGER")
+                .antMatchers(HttpMethod.PUT, "/requests/**").hasAnyRole("MANAGER", "CLIENT")
+                .antMatchers(HttpMethod.DELETE, "/requests/**").hasAnyRole("MANAGER", "CLIENT")
                 .antMatchers(HttpMethod.POST, "/requests/status").hasAnyRole("MANAGER", "CLIENT")
 
                 //auth
