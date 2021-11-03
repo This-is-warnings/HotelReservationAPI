@@ -19,4 +19,6 @@ public interface RequestService {
     void updateStatus(int id, String newStatus);
 
     ArrayList<Request> getByStatus(String status);
+
+    ArrayList<Request> getUserRequestsByStatus(int userId, String status);
 }

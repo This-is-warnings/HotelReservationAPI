@@ -4,6 +4,7 @@ import com.example.hotelreservationapi.domains.ReservedRoom;
 import com.example.hotelreservationapi.services.ReservedRoomService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -50,6 +51,12 @@ public class ReservedRoomController {
     @ApiOperation("get user reserved rooms")
     ArrayList<ReservedRoom> getUserReservedRooms(@PathVariable int id) {
         return reservedRoomService.getUserReservedRooms(id);
+    }
+
+    @PostMapping("/users/{id}/status")
+    @ApiOperation("get user reserved rooms by status")
+    ArrayList<ReservedRoom> getUserReservedRoomsByStatus(@PathVariable int id, @RequestBody String status){
+        return reservedRoomService.getUserReservedRoomsByStatus(id, status);
     }
 
 }

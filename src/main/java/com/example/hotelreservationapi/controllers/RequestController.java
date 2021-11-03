@@ -57,4 +57,11 @@ public class RequestController {
     ArrayList<Request> getRequestsByStatus(@RequestBody String status) {
         return requestService.getByStatus(status);
     }
+
+    @PostMapping("/users/{id}/status")
+    @ApiOperation("get user requests by status")
+    ArrayList<Request> getUserRequestsByStatus(@PathVariable(name = "id") int id, @RequestBody String status){
+        System.out.println(id + status);
+        return requestService.getUserRequestsByStatus(id, status);
+    }
 }

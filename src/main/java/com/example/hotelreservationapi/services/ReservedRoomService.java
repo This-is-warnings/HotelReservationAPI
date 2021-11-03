@@ -20,4 +20,6 @@ public interface ReservedRoomService {
 
     ArrayList<ReservedRoom> getUserReservedRooms(int userId);
 
+    ArrayList<ReservedRoom> getUserReservedRoomsByStatus(int userId, String status);
+
 }

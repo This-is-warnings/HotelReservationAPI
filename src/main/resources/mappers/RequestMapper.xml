@@ -78,6 +78,25 @@
         WHERE requests.id = #{id}
     </select>
 
+    <select id="readUserRequestsByStatus" resultMap="RequestResultMap">
+        SELECT requests.id,
+               requests.number_of_rooms,
+               requests.class,
+               requests.start_date,
+               requests.end_date,
+               requests.status,
+               users.id as uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email
+        FROM requests
+                 LEFT JOIN users ON requests.user_id = users.id
+        WHERE users.id = #{userId} AND requests.status = #{status}
+    </select>
+
     <select id="readByStatus" resultMap="RequestResultMap">
         SELECT requests.id,
                requests.number_of_rooms,

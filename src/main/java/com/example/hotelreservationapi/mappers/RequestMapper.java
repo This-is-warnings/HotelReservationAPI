@@ -22,4 +22,6 @@ public interface RequestMapper {
 
     ArrayList<Request> readByStatus(String status);
 
+    ArrayList<Request> readUserRequestsByStatus(int userId, String status);
+
 }

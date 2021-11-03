@@ -75,6 +75,30 @@
         WHERE users.id = #{userId}
     </select>
 
+    <select id="readUserReservedRoomsByStatus" resultMap="ReservedRoomResultMap">
+        SELECT reserved_rooms.id,
+               reserved_rooms.price,
+               reserved_rooms.start_date,
+               reserved_rooms.end_date,
+               reserved_rooms.status,
+               users.id AS uId,
+               users.login,
+               users.password,
+               users.name,
+               users.surname,
+               users.middlename,
+               users.email,
+               rooms.id AS rId,
+               rooms.number,
+               rooms.number_of_rooms,
+               rooms.class,
+               rooms.price_per_day
+        FROM reserved_rooms
+                 LEFT JOIN users ON reserved_rooms.user_id = users.id
+                 LEFT JOIN rooms ON reserved_rooms.room_id = rooms.id
+        WHERE users.id = #{userId} AND reserved_rooms.status = #{status}
+    </select>
+
     <select id="readByStatus" resultMap="ReservedRoomResultMap">
         SELECT reserved_rooms.id,
                reserved_rooms.price,

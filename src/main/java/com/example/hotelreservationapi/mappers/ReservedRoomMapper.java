@@ -22,4 +22,6 @@ public interface ReservedRoomMapper {
 
     ArrayList<ReservedRoom> readUserReservedRooms(int userId);
 
+    ArrayList<ReservedRoom> readUserReservedRoomsByStatus(int userId, String status);
+
 }
