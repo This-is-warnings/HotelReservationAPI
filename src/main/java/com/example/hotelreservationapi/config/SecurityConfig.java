@@ -44,8 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .antMatchers("/roles").hasRole("ADMIN")
 
                 // rooms
-                .antMatchers("/rooms/**").hasRole("MANAGER")
-                .antMatchers(HttpMethod.GET, "/rooms/*").hasRole("CLIENT")
+                .antMatchers("/rooms").hasRole("MANAGER")
+                .antMatchers(HttpMethod.GET, "/rooms/*").hasAnyRole("CLIENT", "MANAGER")
+                .antMatchers(HttpMethod.DELETE, "/rooms/*").hasRole("MANAGER")
+                .antMatchers(HttpMethod.POST, "/rooms/*").hasRole("MANAGER")
 
                 // requests
                 .antMatchers(HttpMethod.GET, "/requests").hasRole("MANAGER")
