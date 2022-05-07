@@ -16,6 +16,8 @@ public interface RequestMapper {
 
     void deleteRequest(int id);
 
+    void deleteByUserId(int userId);
+
     void create(Request request);
 
     void updateStatus(int id, String newStatus);

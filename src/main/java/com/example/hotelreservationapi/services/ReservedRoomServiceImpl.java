@@ -29,6 +29,16 @@ public class ReservedRoomServiceImpl implements ReservedRoomService {
     }
 
     @Override
+    public void deleteReservedRoomByRoomId(int roomId) {
+        reservedRoomMapper.deleteByRoomId(roomId);
+    }
+
+    @Override
+    public void deleteReservedRoomByUserId(int userId) {
+        reservedRoomMapper.deleteByUserId(userId);
+    }
+
+    @Override
     public void updateReservedRoomStatus(int id, String status) {
         reservedRoomMapper.updateStatus(id, status);
     }

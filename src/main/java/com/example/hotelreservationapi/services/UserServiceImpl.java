@@ -18,6 +18,15 @@ public class UserServiceImpl implements UserService {
     @Autowired
     RoleService roleService;
 
+    @Autowired
+    ReservedRoomService reservedRoomService;
+
+    @Autowired
+    RequestService requestService;
+
+    @Autowired
+    CardService cardService;
+
     BCryptPasswordEncoder bCrypt = new BCryptPasswordEncoder();
 
     @Override
@@ -34,7 +43,7 @@ public class UserServiceImpl implements UserService {
     public void updateUser(User user) {
         User userNow = getUserById(user.getId());
 
-        if(!userNow.getPassword().equals(user.getPassword())) user.setPassword(bCrypt.encode(user.getPassword()));
+        if (!userNow.getPassword().equals(user.getPassword())) user.setPassword(bCrypt.encode(user.getPassword()));
 
         if (!(userNow.getRoles().size() == user.getRoles().size() && // if roles edit
                 userNow.getRoles().containsAll(user.getRoles()))) {
@@ -50,6 +59,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void deleteUser(int id) {
         userMapper.delete(id);
+        reservedRoomService.deleteReservedRoomByUserId(id);
+        requestService.deleteByUserId(id);
+        cardService.deleteByUserId(id);
     }
 
     @Override

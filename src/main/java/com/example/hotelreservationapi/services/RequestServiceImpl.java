@@ -29,6 +29,11 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    public void deleteByUserId(int userId) {
+        requestMapper.deleteByUserId(userId);
+    }
+
+    @Override
     public void add(Request request) {
         requestMapper.create(request);
     }

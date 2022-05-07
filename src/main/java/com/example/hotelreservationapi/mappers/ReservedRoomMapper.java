@@ -12,6 +12,10 @@ public interface ReservedRoomMapper {
 
     void delete(int id);
 
+    void deleteByRoomId(int roomId);
+
+    void deleteByUserId(int userId);
+
     ArrayList<ReservedRoom> read();
 
     void updateStatus(int id, String status);

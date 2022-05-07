@@ -19,4 +19,6 @@ public interface CardMapper {
 
     Card readById(int id);
 
+    void deleteByUserId(int userId);
+
 }

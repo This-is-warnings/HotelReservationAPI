@@ -46,6 +46,12 @@
         WHERE id = #{id}
     </delete>
 
+    <delete id="deleteByUserId">
+        DELETE
+        FROM cards
+        WHERE user_id = #{userId}
+    </delete>
+
     <update id="updateBalance">
         UPDATE cards
         SET balance = balance + #{balance}

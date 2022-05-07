@@ -24,6 +24,11 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    public void deleteByUserId(int userId) {
+        cardMapper.deleteByUserId(userId);
+    }
+
+    @Override
     public ArrayList<Card> getUserCards(int userId) {
         System.out.println("user id " + userId);
         return cardMapper.readUserCards(userId);

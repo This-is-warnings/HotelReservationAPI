@@ -10,6 +10,8 @@ public interface CardService {
 
     void deleteCard(int id);
 
+    void deleteByUserId(int id);
+
     ArrayList<Card> getUserCards(int userId);
 
     void updateBalance(int id, float balance);

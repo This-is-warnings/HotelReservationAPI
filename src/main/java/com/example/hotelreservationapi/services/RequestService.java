@@ -14,6 +14,8 @@ public interface RequestService {
 
     void delete(int id);
 
+    void deleteByUserId(int userId);
+
     void add(Request request);
 
     void updateStatus(int id, String newStatus);

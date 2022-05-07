@@ -12,6 +12,10 @@ public interface ReservedRoomService {
 
     void deleteReservedRoom(int id);
 
+    void deleteReservedRoomByRoomId(int roomId);
+
+    void deleteReservedRoomByUserId(int userId);
+
     void updateReservedRoomStatus(int id, String status);
 
     ArrayList<ReservedRoom> getByStatus(String status);

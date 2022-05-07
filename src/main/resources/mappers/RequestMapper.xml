@@ -122,6 +122,12 @@
         WHERE id = #{id}
     </delete>
 
+    <delete id="deleteByUserId">
+        DELETE
+        FROM requests
+        WHERE user_id = #{userId}
+    </delete>
+
     <insert id="create">
         INSERT INTO requests(user_id, number_of_rooms, class, start_date, end_date, status)
         VALUES (#{user.id},
