@@ -1,5 +1,7 @@
 package com.example.hotelreservationapi.domains;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Room {
@@ -13,6 +15,8 @@ public class Room {
     private String roomClass;
 
     private float pricePerDay;
+
+    ArrayList<AddService> addServices = new ArrayList<>();
 
     public int getId() {
         return id;
@@ -52,6 +56,14 @@ public class Room {
 
     public void setPricePerDay(float pricePerDay) {
         this.pricePerDay = pricePerDay;
+    }
+
+    public ArrayList<AddService> getServices() {
+        return addServices;
+    }
+
+    public void setServices(ArrayList<AddService> services) {
+        this.addServices = services;
     }
 
     @Override

@@ -17,10 +17,11 @@
         FROM rooms
     </select>
 
-    <insert id="create">
+    <select id="create" resultType="int">
         INSERT INTO rooms(number, number_of_rooms, class, price_per_day)
-        VALUES (#{number}, #{numberOfRooms}, #{roomClass}, #{pricePerDay});
-    </insert>
+        VALUES (#{number}, #{numberOfRooms}, #{roomClass}, #{pricePerDay})
+        RETURNING id;
+    </select>
 
     <delete id="delete">
         DELETE

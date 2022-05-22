@@ -19,9 +19,13 @@ public class RoomServiceImpl implements RoomService {
     @Autowired
     ReservedRoomService reservedRoomService;
 
+    @Autowired
+    AddServicesService addServicesService;
+
     @Override
     public void add(Room room) {
-        roomMapper.create(room);
+        int id = roomMapper.create(room);
+        addServicesService.addServicesToRoom(room.getServices(), id);
     }
 
     @Override
@@ -38,6 +42,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     public void update(Room room) {
         roomMapper.update(room);
+        //addServicesService.updateRoomServices(room.getServices(), room.getId());
     }
 
     @Override

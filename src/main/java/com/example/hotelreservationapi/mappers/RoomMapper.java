@@ -8,7 +8,7 @@ import java.util.ArrayList;
 @Mapper
 public interface RoomMapper {
 
-    void create(Room room);
+    int create(Room room);
 
     void delete(int id);
 

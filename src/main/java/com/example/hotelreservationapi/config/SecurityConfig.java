@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 .authorizeRequests()
 
                 //users
-                .antMatchers("/users", "/users/*").hasRole("ADMIN")
+                .antMatchers("/users", "/users/*").hasAnyRole("ADMIN", "MANAGER")
                 .antMatchers("/users/*/cards", "/users/cards/*").hasRole("CLIENT")
 
                 //reserved rooms

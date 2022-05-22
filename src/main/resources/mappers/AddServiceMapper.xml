@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hotelreservationapi.mappers.AddServiceMapper">
+    <resultMap id="AddServiceResultMap" type="com.example.hotelreservationapi.domains.AddService">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+    <select id="gerAllAddServices" resultMap="AddServiceResultMap">
+        SELECT *
+        FROM add_services
+    </select>
+
+    <select id="getAllAddServicesByRoomId" resultMap="AddServiceResultMap">
+        SELECT add_services.id, add_services.name
+        FROM rooms_add_services left join add_services on rooms_add_services.add_service_id = add_services.id
+        WHERE rooms_add_services.room_id = #{roomId};
+    </select>
+
+    <insert id="addServiceToRoom">
+        INSERT INTO rooms_add_services
+        VALUES (#{serviceId}, #{roomId});
+    </insert>
+
+    <delete id="deleteServiceFromRoom">
+        DELETE
+        FROM rooms_add_services
+        WHERE rooms_add_services.add_service_id = #{serviceId}
+          AND rooms_add_services.room_id = #{roomId};
+    </delete>
+
+    <delete id="deleteAllRoomsService">
+        DELETE
+        FROM rooms_add_services
+        WHERE rooms_add_services.room_id = #{roomId}
+    </delete>
+
+</mapper>

@@ -69,7 +69,7 @@ create table cards
 alter table cards alter column number type varchar(20) using number::varchar(20);
 
 alter table cards alter column balance set default 300;
--- tabel requests
+-- table requests
 create table requests
 (
 	id serial
@@ -83,7 +83,7 @@ create table requests
 	class varchar(5) not null,
 	start_date date not null,
 	end_date date not null,
-	"isConfirmed" boolean default null
+	status varchar(16) default null
 );
 
 --after
@@ -104,8 +104,7 @@ create table rooms
 	number int not null,
 	number_of_rooms smallint not null,
 	class varchar(5) not null,
-	price_per_day real not null,
-	"isFree" boolean default true not null
+	price_per_day real not null
 );
 alter table rooms rename column "isFree" to is_free;
 
